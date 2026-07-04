@@ -168,15 +168,15 @@ nav{
 /* Home branch cards */
 .home-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(165px,1fr));
-  gap:1rem;max-width:960px;width:100%;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:1.5rem;max-width:960px;width:100%;
 }
 
 .home-card{
   background:var(--surface);
   border:1.5px solid var(--border2);
   border-radius:18px;
-  padding:1.75rem 1rem 1.5rem;
+  padding:1.75rem 1.25rem 1.5rem;
   cursor:pointer;
   transition:all 0.25s;
   text-align:center;
@@ -197,10 +197,10 @@ nav{
 .home-card:hover::before{transform:scaleX(1);}
 
 .home-card .ic{font-size:2.6rem;margin-bottom:0.75rem;display:block;}
-.home-card h3{font-size:0.92rem;font-weight:800;color:var(--text);margin-bottom:0.3rem;line-height:1.3;}
-.home-card p{font-size:0.74rem;color:var(--text-muted);margin:0;font-weight:500;}
+.home-card h3{font-size:0.98rem;font-weight:800;color:var(--text);margin-bottom:0.5rem;line-height:1.3;}
+.home-card p{font-size:0.78rem;color:var(--text-mid);margin:0 0 1rem 0;font-weight:500;line-height:1.5;}
 .home-card .count{
-  margin-top:0.8rem;display:inline-block;
+  display:inline-block;
   background:var(--biru-pale);color:var(--biru);
   font-size:0.7rem;font-weight:800;
   padding:0.25rem 0.75rem;border-radius:100px;
@@ -234,7 +234,7 @@ nav{
 }
 .branch-header p{
   font-size:0.98rem;color:var(--text-mid);
-  max-width:580px;line-height:1.8;font-weight:500;
+  max-width:700px;line-height:1.8;font-weight:500;
 }
 
 /* ── VIDEO SECTION ── */
@@ -299,9 +299,15 @@ nav{
   display:flex;flex-direction:column;gap:0.6rem;
 }
 
+.video-meta-row{
+  display:flex;
+  gap:0.5rem;
+  flex-wrap:wrap;
+}
+
 .video-num{
   font-size:0.68rem;font-weight:800;
-  color:var(--kuning);letter-spacing:0.1em;
+  letter-spacing:0.1em;
   text-transform:uppercase;
   background:var(--kuning-muda);
   display:inline-block;padding:0.2rem 0.6rem;
@@ -316,7 +322,7 @@ nav{
 }
 
 .video-peserta{
-  font-size:0.78rem;color:var(--text-muted);
+  font-size:0.78rem;color:var(--text-mid);
   display:flex;align-items:center;gap:0.4rem;font-weight:600;
 }
 
@@ -351,12 +357,6 @@ footer{
 }
 footer strong{color:var(--biru);}
 
-/* ── WAVE DIVIDER HOME ── */
-.hero-wave{
-  position:absolute;bottom:0;left:0;right:0;
-  line-height:0;pointer-events:none;
-}
-
 @media(max-width:640px){
   nav{padding:0 1rem;gap:0.75rem;}
   .nav-brand-text .t2{display:none;}
@@ -364,7 +364,7 @@ footer strong{color:var(--biru);}
   .video-section{padding:1.5rem 1rem 3rem;}
   .video-grid{grid-template-columns:1fr;}
   .hero{padding:4rem 1rem 3rem;}
-  .home-grid{grid-template-columns:repeat(2,1fr);}
+  .home-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -375,7 +375,7 @@ footer strong{color:var(--biru);}
     <div class="nav-brand-logo">🎭</div>
     <div class="nav-brand-text">
       <span class="t1">PENSI YKAKI</span>
-      <span class="t2">Yayasan Kanker Anak Kita Indonesia</span>
+      <span class="t2">Yayasan Kasih Anak Kanker Indonesia</span>
     </div>
   </div>
   <div class="nav-divider"></div>
@@ -387,17 +387,17 @@ footer strong{color:var(--biru);}
   <section class="hero">
     <div class="hero-blob1"></div>
     <div class="hero-blob2"></div>
-    <div class="hero-eyebrow"><span class="dot"></span>Pentas Seni 2026</div>
+    <div class="hero-eyebrow"><span class="dot"></span>Pentas Seni • 23 Juli 2026</div>
     <h1>
       <span class="biru">PENSI</span><br>
       <span class="kuning">YKAKI</span>
     </h1>
-    <p class="hero-sub">Saksikan penampilan terbaik dari para peserta di setiap cabang lomba.</p>
-    <p class="hero-org">Yayasan Kanker Anak Kita Indonesia</p>
+    <p class="hero-sub">Saksikan penampilan terbaik dari para peserta di setiap cabang lomba untuk memeriahkan acara utama.</p>
+    <p class="hero-org">Yayasan Kasih Anak Kanker Indonesia</p>
     <div class="home-grid" id="homeGrid"></div>
   </section>
   <footer>
-    <strong>PENSI YKAKI 2026</strong> — Yayasan Kanker Anak Kita Indonesia. Semua Hak Dilindungi.
+    <strong>PENSI YKAKI 2026</strong> — Yayasan Kasih Anak Kanker Indonesia. Semua Hak Dilindungi.
   </footer>
 </div>
 
@@ -406,71 +406,63 @@ const branches = [
   {
     id: "story-telling",
     icon: "📖",
-    name: "Story Telling",
-    desc: "Kompetisi bercerita ekspresif dalam Bahasa Indonesia maupun Bahasa Inggris. Peserta menyampaikan cerita dengan penghayatan dan ekspresi terbaik.",
-    gform: "https://forms.gle/GANTI_LINK_GFORM_1",
+    name: "Story Telling (Cita-Citaku)",
+    desc: "Kompetisi bercerita ekspresif bertemakan Cita-Citaku. Cabang ini dibagi berdasarkan 3 kategori rentang usia sesuai data: Kategori A (4–7 tahun), Kategori B (8–12 tahun), dan Kategori C (13–18 tahun). Setiap peserta mengirimkan 1 penampilan terbaik mereka.",
+    gform: "https://forms.gle/QmbMJEQqfQaDcPCW6",
     videos: [
-      { title: "Ganti dengan Judul Video Peserta 1", youtubeId: "", peserta: "Nama Peserta / Sekolah" },
-      { title: "Ganti dengan Judul Video Peserta 2", youtubeId: "", peserta: "Nama Peserta / Sekolah" },
-      { title: "Ganti dengan Judul Video Peserta 3", youtubeId: "", peserta: "Nama Peserta / Sekolah" },
-      { title: "Ganti dengan Judul Video Peserta 4", youtubeId: "", peserta: "Nama Peserta / Sekolah" },
-      { title: "Ganti dengan Judul Video Peserta 5", youtubeId: "", peserta: "Nama Peserta / Sekolah" },
-    ]
-  },
-  {
-    id: "puisi",
-    icon: "✍️",
-    name: "Puisi",
-    desc: "Lomba pembacaan dan penulisan puisi dengan penghayatan mendalam. Ekspresikan emosi dan pesan melalui kata-kata yang indah.",
-    gform: "https://forms.gle/GANTI_LINK_GFORM_2",
-    videos: [
-      { title: "Ganti dengan Judul Video Peserta 1", youtubeId: "", peserta: "Nama Peserta / Sekolah" },
-      { title: "Ganti dengan Judul Video Peserta 2", youtubeId: "", peserta: "Nama Peserta / Sekolah" },
-      { title: "Ganti dengan Judul Video Peserta 3", youtubeId: "", peserta: "Nama Peserta / Sekolah" },
-      { title: "Ganti dengan Judul Video Peserta 4", youtubeId: "", peserta: "Nama Peserta / Sekolah" },
-      { title: "Ganti dengan Judul Video Peserta 5", youtubeId: "", peserta: "Nama Peserta / Sekolah" },
+      { title: "Video Penampilan", youtubeId: "", peserta: "Nama Peserta 1", kategori: "Kategori A (4-7 Thn)" },
+      { title: "Video Penampilan", youtubeId: "", peserta: "Nama Peserta 2", kategori: "Kategori A (4-7 Thn)" },
+      { title: "Video Penampilan", youtubeId: "", peserta: "Nama Peserta 3", kategori: "Kategori B (8-12 Thn)" },
+      { title: "Video Penampilan", youtubeId: "", peserta: "Nama Peserta 4", kategori: "Kategori B (8-12 Thn)" },
+      { title: "Video Penampilan", youtubeId: "", peserta: "Nama Peserta 5", kategori: "Kategori C (13-18 Thn)" },
+      { title: "Video Penampilan", youtubeId: "", peserta: "Nama Peserta 6", kategori: "Kategori C (13-18 Thn)" },
+      { title: "Video Penampilan", youtubeId: "", peserta: "Nama Peserta 7", kategori: "Kategori C (13-18 Thn)" }
     ]
   },
   {
     id: "paduan-suara",
     icon: "🎶",
-    name: "Paduan Suara",
-    desc: "Kompetisi paduan suara antar kelompok dengan harmonisasi suara yang indah. Tampilkan keselarasan dan kekompakan terbaik timmu.",
-    gform: "https://forms.gle/GANTI_LINK_GFORM_3",
+    name: "Nyanyi Bersama",
+    desc: "Kompetisi bernyanyi secara berkelompok (gabungan anak-anak, staf, guru, dan orang tua YKAKI) membawakan lagu wajib 'Para para papa' dari Kidos Band. Penilaian utama difokuskan pada kekompakan dan kebersamaan tim.",
+    gform: "https://forms.gle/PFtXvu7gPgkFQqkX7",
     videos: [
-      { title: "Ganti dengan Judul Video Kelompok 1", youtubeId: "", peserta: "Nama Kelompok / Sekolah" },
-      { title: "Ganti dengan Judul Video Kelompok 2", youtubeId: "", peserta: "Nama Kelompok / Sekolah" },
-      { title: "Ganti dengan Judul Video Kelompok 3", youtubeId: "", peserta: "Nama Kelompok / Sekolah" },
-      { title: "Ganti dengan Judul Video Kelompok 4", youtubeId: "", peserta: "Nama Kelompok / Sekolah" },
-      { title: "Ganti dengan Judul Video Kelompok 5", youtubeId: "", peserta: "Nama Kelompok / Sekolah" },
-    ]
-  },
-  {
-    id: "tari-tradisional",
-    icon: "💃",
-    name: "Tari Tradisional",
-    desc: "Kompetisi tari daerah Nusantara yang memperlihatkan kekayaan budaya Indonesia melalui gerak dan kostum yang autentik.",
-    gform: "https://forms.gle/GANTI_LINK_GFORM_4",
-    videos: [
-      { title: "Ganti dengan Judul Video Kelompok 1", youtubeId: "", peserta: "Nama Kelompok / Sekolah" },
-      { title: "Ganti dengan Judul Video Kelompok 2", youtubeId: "", peserta: "Nama Kelompok / Sekolah" },
-      { title: "Ganti dengan Judul Video Kelompok 3", youtubeId: "", peserta: "Nama Kelompok / Sekolah" },
-      { title: "Ganti dengan Judul Video Kelompok 4", youtubeId: "", peserta: "Nama Kelompok / Sekolah" },
-      { title: "Ganti dengan Judul Video Kelompok 5", youtubeId: "", peserta: "Nama Kelompok / Sekolah" },
+      { title: "Lagu: Para para papa (Kidos Band)", youtubeId: "", peserta: "Kelompok YKAKI Jakarta", kategori: "Cabang Jakarta" },
+      { title: "Lagu: Para para papa (Kidos Band)", youtubeId: "", peserta: "Kelompok YKAKI Surabaya", kategori: "Cabang Surabaya" },
+      { title: "Lagu: Para para papa (Kidos Band)", youtubeId: "", peserta: "Kelompok YKAKI Semarang", kategori: "Cabang Semarang" },
+      { title: "Lagu: Para para papa (Kidos Band)", youtubeId: "", peserta: "Kelompok YKAKI Yogyakarta", kategori: "Cabang Yogyakarta" },
+      { title: "Lagu: Para para papa (Kidos Band)", youtubeId: "", peserta: "Kelompok YKAKI Makassar", kategori: "Cabang Makassar" },
+      { title: "Lagu: Para para papa (Kidos Band)", youtubeId: "", peserta: "Kelompok YKAKI Bandung", kategori: "Cabang Bandung" },
+      { title: "Lagu: Para para papa (Kidos Band)", youtubeId: "", peserta: "Kelompok YKAKI Riau", kategori: "Cabang Riau" }
     ]
   },
   {
     id: "duta-cilik",
     icon: "🌟",
     name: "Duta Cilik YKAKI",
-    desc: "Ajang pemilihan Duta Cilik YKAKI yang menampilkan bakat, wawasan, dan kepedulian anak-anak terhadap sesama, khususnya pejuang kanker anak.",
-    gform: "https://forms.gle/GANTI_LINK_GFORM_5",
+    desc: "Ajang pemilihan Duta Cilik YKAKI yang menampilkan wawasan, bakat, dan kepedulian sosial perwakilan tiap daerah YKAKI. Masing-masing cabang mengirimkan 2 klip video penampilan.",
+    gform: "https://forms.gle/8saL9NHbmWjo8YQk8",
     videos: [
-      { title: "Ganti dengan Judul Video Peserta 1", youtubeId: "", peserta: "Nama Peserta" },
-      { title: "Ganti dengan Judul Video Peserta 2", youtubeId: "", peserta: "Nama Peserta" },
-      { title: "Ganti dengan Judul Video Peserta 3", youtubeId: "", peserta: "Nama Peserta" },
-      { title: "Ganti dengan Judul Video Peserta 4", youtubeId: "", peserta: "Nama Peserta" },
-      { title: "Ganti dengan Judul Video Peserta 5", youtubeId: "", peserta: "Nama Peserta" },
+      /* JAKARTA */
+      { title: "Video 1 - Profil & Unjuk Bakat", youtubeId: "", peserta: "Perwakilan Jakarta", kategori: "Klip 01" },
+      { title: "Video 2 - Tambahan / Bebas", youtubeId: "", peserta: "Perwakilan Jakarta", kategori: "Klip 02" },
+      /* SURABAYA */
+      { title: "Video 1 - Profil & Unjuk Bakat", youtubeId: "", peserta: "Perwakilan Surabaya", kategori: "Klip 01" },
+      { title: "Video 2 - Tambahan / Bebas", youtubeId: "", peserta: "Perwakilan Surabaya", kategori: "Klip 02" },
+      /* SEMARANG */
+      { title: "Video 1 - Profil & Unjuk Bakat", youtubeId: "", peserta: "Perwakilan Semarang", kategori: "Klip 01" },
+      { title: "Video 2 - Tambahan / Bebas", youtubeId: "", peserta: "Perwakilan Semarang", kategori: "Klip 02" },
+      /* Yogyakarta */
+      { title: "Video 1 - Profil & Unjuk Bakat", youtubeId: "", peserta: "Perwakilan Yogyakarta", kategori: "Klip 01" },
+      { title: "Video 2 - Tambahan / Bebas", youtubeId: "", presidential: "", peserta: "Perwakilan Yogyakarta", kategori: "Klip 02" },
+      /* MAKASSAR */
+      { title: "Video 1 - Profil & Unjuk Bakat", youtubeId: "", peserta: "Perwakilan Makassar", kategori: "Klip 01" },
+      { title: "Video 2 - Tambahan / Bebas", youtubeId: "", peserta: "Perwakilan Makassar", kategori: "Klip 02" },
+      /* BANDUNG */
+      { title: "Video 1 - Profil & Unjuk Bakat", youtubeId: "", peserta: "Perwakilan Bandung", kategori: "Klip 01" },
+      { title: "Video 2 - Tambahan / Bebas", youtubeId: "", peserta: "Perwakilan Bandung", kategori: "Klip 02" },
+      /* RIAU */
+      { title: "Video 1 - Profil & Unjuk Bakat", youtubeId: "", peserta: "Perwakilan Riau", kategori: "Klip 01" },
+      { title: "Video 2 - Tambahan / Bebas", youtubeId: "", peserta: "Perwakilan Riau", kategori: "Klip 02" }
     ]
   },
 ];
@@ -482,7 +474,7 @@ function buildSite() {
   branches.forEach((b) => {
     const tab = document.createElement('button');
     tab.className = 'nav-tab';
-    tab.innerHTML = `<span>${b.icon}</span> ${b.name}`;
+    tab.innerHTML = `<span>${b.icon}</span> ${b.name.split(' (')[0]}`;
     tab.onclick = () => showPage(b.id);
     navTabs.appendChild(tab);
 
@@ -491,8 +483,8 @@ function buildSite() {
     card.innerHTML = `
       <span class="ic">${b.icon}</span>
       <h3>${b.name}</h3>
-      <p>${b.desc.split('.')[0]}.</p>
-      <span class="count">${b.videos.length} Video</span>
+      <p>${b.desc.substring(0, 110)}...</p>
+      <span class="count">${b.videos.length} Video Penampilan</span>
     `;
     card.onclick = () => showPage(b.id);
     homeGrid.appendChild(card);
@@ -507,18 +499,23 @@ function buildSite() {
         ? `<iframe src="https://www.youtube.com/embed/${v.youtubeId}?rel=0&modestbranding=1" title="${v.title}" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe>`
         : `<div class="video-placeholder"><span class="ph-icon">▶️</span><span class="ph-txt">Video Segera Hadir</span></div>`;
 
+      const nomorDisplay = String(i + 1).padStart(2, '0');
+
       return `
       <div class="video-card">
         <div class="video-thumb">${thumbHTML}</div>
         <div class="video-info">
-          <div class="video-num">Peserta ${String(i+1).padStart(2,'0')}</div>
+          <div class="video-meta-row">
+            <div class="video-num">No. ${nomorDisplay}</div>
+            <div class="video-num" style="background:var(--biru-pale); border-color:var(--biru-muda); color:var(--biru);">${v.kategori}</div>
+          </div>
           <div class="video-title">${v.title}</div>
           <div class="video-peserta">👤 ${v.peserta}</div>
           <a class="btn-gform" href="${b.gform}" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
             </svg>
-            Daftar / Voting via Google Form
+            Vote via Google Form
           </a>
         </div>
       </div>`;
@@ -526,7 +523,7 @@ function buildSite() {
 
     page.innerHTML = `
       <div class="branch-header">
-        <div class="branch-tag">Cabang Lomba PENSI YKAKI</div>
+        <div class="branch-tag">Cabang Lomba PENSI YKAKI 2026</div>
         <h1>${b.icon} ${b.name}</h1>
         <p>${b.desc}</p>
       </div>
@@ -535,7 +532,7 @@ function buildSite() {
         <div class="video-grid">${videosHTML}</div>
       </div>
       <footer>
-        <strong>PENSI YKAKI 2026</strong> — Yayasan Kanker Anak Kita Indonesia. Semua Hak Dilindungi.
+        <strong>PENSI YKAKI 2026</strong> — Yayasan Kasih Anak Kanker Indonesia. Semua Hak Dilindungi.
       </footer>
     `;
     document.body.appendChild(page);
