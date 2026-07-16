@@ -326,6 +326,19 @@ nav{
   display:flex;align-items:center;gap:0.4rem;font-weight:600;
 }
 
+.link-yt-alt {
+  font-size: 0.75rem;
+  color: var(--biru);
+  text-decoration: none;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: -0.2rem;
+  margin-bottom: 0.2rem;
+}
+.link-yt-alt:hover { text-decoration: underline; }
+
 .btn-gform{
   display:inline-flex;align-items:center;justify-content:center;
   gap:0.5rem;
@@ -458,20 +471,26 @@ const branches = [
     desc: "Ajang pemilihan Duta Cilik YKAKI yang menampilkan wawasan, bakat, dan kepedulian sosial perwakilan tiap daerah YKAKI. Masing-masing cabang mengirimkan video penampilan terbaik mereka.",
     gform: "https://forms.gle/8saL9NHbmWjo8YQk8",
     videos: [
-      { title: "Video 1 - Profil & Unjuk Bakat", youtubeId: "", peserta: "Perwakilan Jakarta", kategori: "Klip 01" },
-      { title: "Video 2 - Tambahan / Bebas", youtubeId: "", peserta: "Perwakilan Jakarta", kategori: "Klip 02" },
-      { title: "Video 1 - Profil & Unjuk Bakat", youtubeId: "", peserta: "Perwakilan Surabaya", kategori: "Klip 01" },
-      { title: "Video 2 - Tambahan / Bebas", youtubeId: "", peserta: "Perwakilan Surabaya", kategori: "Klip 02" },
-      { title: "Video 1 - Profil & Unjuk Bakat", youtubeId: "", peserta: "Perwakilan Semarang", kategori: "Klip 01" },
-      { title: "Video 2 - Tambahan / Bebas", youtubeId: "", peserta: "Perwakilan Semarang", kategori: "Klip 02" },
-      { title: "Video 1 - Profil & Unjuk Bakat", youtubeId: "", peserta: "Perwakilan Yogyakarta", kategori: "Klip 01" },
-      { title: "Video 2 - Tambahan / Bebas", youtubeId: "", peserta: "Perwakilan Yogyakarta", kategori: "Klip 02" },
-      { title: "Video 1 - Profil & Unjuk Bakat", youtubeId: "", peserta: "Perwakilan Makassar", kategori: "Klip 01" },
-      { title: "Video 2 - Tambahan / Bebas", youtubeId: "", peserta: "Perwakilan Makassar", kategori: "Klip 02" },
-      { title: "Video 1 - Profil & Unjuk Bakat", youtubeId: "", peserta: "Perwakilan Bandung", kategori: "Klip 01" },
-      { title: "Video 2 - Tambahan / Bebas", youtubeId: "", peserta: "Perwakilan Bandung", kategori: "Klip 02" },
-      { title: "Video 1 - Profil & Unjuk Bakat", youtubeId: "", peserta: "Perwakilan Riau", kategori: "Klip 01" },
-      { title: "Video 2 - Tambahan / Bebas", youtubeId: "", peserta: "Perwakilan Riau", kategori: "Klip 02" }
+      /* SURABAYA */
+      { title: "Video Penampilan", youtubeId: "sJaAWG1DBmo", peserta: "Perwakilan Surabaya", kategori: "Duta Cilik - D1" },
+      
+      /* SEMARANG */
+      { title: "Video Penampilan", youtubeId: "x4nvIIcMyL0", peserta: "Perwakilan Semarang", kategori: "Duta Cilik - D2" },
+      
+      /* RIAU */
+      { title: "Video Penampilan", youtubeId: "rO37QmskmhU", peserta: "Perwakilan Riau", kategori: "Duta Cilik - D3" },
+      
+      /* BANDUNG */
+      { title: "Video Penampilan", youtubeId: "uCnI4wxkUeA", peserta: "Perwakilan Bandung", kategori: "Duta Cilik - D4" },
+      
+      /* JAKARTA */
+      { title: "Video Penampilan", youtubeId: "TfHjH6KZ-Ao", peserta: "Perwakilan Jakarta", kategori: "Duta Cilik - D5" },
+      
+      /* YOGYAKARTA */
+      { title: "Video Penampilan", youtubeId: "CNT4HSUiLfE", peserta: "Perwakilan Yogyakarta", kategori: "Duta Cilik - D6" },
+      
+      /* MAKASSAR */
+      { title: "Video Penampilan", youtubeId: "DKLSiblJEt0", peserta: "Perwakilan Makassar", kategori: "Duta Cilik - D7" }
     ]
   },
 ];
@@ -505,10 +524,16 @@ function buildSite() {
     const videosHTML = b.videos.map((v, i) => {
       const hasVideo = v.youtubeId && v.youtubeId.trim() !== '';
       const thumbHTML = hasVideo
-        ? `<iframe src="https://www.youtube.com/embed/${v.youtubeId}?rel=0&modestbranding=1" title="${v.title}" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe>`
+        ? `<iframe src="https://www.youtube.com/embed/${v.youtubeId}" title="${v.title}" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe>`
         : `<div class="video-placeholder"><span class="ph-icon">▶️</span><span class="ph-txt">Video Segera Hadir</span></div>`;
 
       const nomorDisplay = String(i + 1).padStart(2, '0');
+      
+      const altLinkHTML = hasVideo 
+        ? `<a class="link-yt-alt" href="https://youtu.be/${v.youtubeId}" target="_blank" rel="noopener">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:2px;"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg> Nonton di YouTube
+           </a>`
+        : '';
 
       return `
       <div class="video-card">
@@ -520,6 +545,7 @@ function buildSite() {
           </div>
           <div class="video-title">${v.title}</div>
           <div class="video-peserta">👤 ${v.peserta}</div>
+          ${altLinkHTML}
           <a class="btn-gform" href="${b.gform}" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
